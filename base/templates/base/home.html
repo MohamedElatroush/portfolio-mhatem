@@ -1,0 +1,66 @@
+    {% extends 'base/main.html' %}
+    {% load static %}
+    {% block content %}
+    
+
+    <section class="hero">
+        <div class="hero--content">
+            <div class="hero--content--intro">
+                <h1 class="intro--name">Mohamed <br> Hatem</h1>
+            </div>
+            <div class="hero--content--subheadline">
+                <h3 class="description">Software Engineer</h3>
+                <p class="slogan">I build websites, IOS applications and FullStack Applications. Based in Cairo, Egypt</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container section--2">
+        <h3>My Projects</h3>
+        <h5>Projects that makes my journey worthwhile</h5>
+        <div class="projects--wrapper">
+            {% for project in projects %}
+            <div class="project--column">
+                <a href="{% url 'project' project.id %}">
+                    <img class="project--thumbnail" src="{{project.thumbnail.url}}" alt="">
+                </a>
+                <div class="project--body">
+                    <h5>{{project.title}}</h5>
+                </div>
+            </div>
+            {% empty %}
+            <h3>There are no projects in the database....</h3>
+            {% endfor %}
+        </div>
+        <div class="about--wrapper">
+        <h3>More About Me</h3>
+        
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero tempora iste alias repellendus nulla cupiditate ullam, reprehenderit similique consequuntur quis quos modi eum ipsum suscipit facere! Corrupti similique recusandae perferendis!
+        Impedit, voluptate assumenda provident animi facere voluptas ratione illum odio quis. Dolorem ea nisi dicta corporis excepturi fuga officiis, numquam sapiente voluptatum autem officia illum molestiae, cumque vero, a nesciunt?</p>
+
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem illum velit ea aliquid, necessitatibus doloremque delectus quasi fugit, molestias quia omnis corporis commodi cum porro dolorum veniam expedita accusamus consequatur!</p>
+    </div>
+    </section>
+    <section class="section--1">
+        <div class="skills--container">
+            <h3>More About Me</h3>
+            {% for skill in detailed_skills %}
+            <div class="skill--wrapper">
+                <h5>{{skill.title}}</h5>
+                <p>{{skill.body}}</p>
+            </div>
+            {% endfor %}
+            <h4>Other Skills</h4>
+            
+            <div class="other--skills--wrapper">
+                {% for skill in skills %}
+                <div class="skill--tag">
+                    <span>{{skill.title}}</span>
+                </div>
+                {% endfor %}
+            </div>
+            
+        </div>
+        
+    </section>
+    {% endblock content %}
