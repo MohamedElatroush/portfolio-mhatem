@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Project, Message, Skill
+from .models import Project, Message, Skill, Comment
 
 class ProjectForm(ModelForm):
     class Meta:
@@ -42,6 +42,19 @@ class SkillForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(SkillForm, self).__init__(*args, **kwargs)
         self.fields['title'].widget.attrs.update(
+            {'class': 'form-control'})
+        self.fields['body'].widget.attrs.update(
+            {'class': 'form-control', })
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+        exclude = ['project']
+
+    def __init__(self, *args, **kwargs):
+        super(CommentForm, self).__init__(*args, **kwargs)
+        self.fields['name'].widget.attrs.update(
             {'class': 'form-control'})
         self.fields['body'].widget.attrs.update(
             {'class': 'form-control', })

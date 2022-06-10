@@ -18,10 +18,11 @@ class Project(models.Model):
 class Comment(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
-    body = models.TextField(null=True, blank=True) 
+    body = models.TextField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return self.body[:50]
+        return self.body[0:50]
 
 
 class Skill(models.Model):
